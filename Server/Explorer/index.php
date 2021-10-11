@@ -39,9 +39,9 @@ else {
 		$finder = 'Unknown';
 		$coinbase = $blockchainExplorer->getTransaction($block['tx'][0], true);
 		foreach ($coinbase['vout'] as &$output) {
-			if (isset($output['scriptPubKey']['addresses'][0])) {
+			if (isset($output['scriptPubKey']['address'])) {
 				if ($output['value'] > 0) {
-					$finder = $output['scriptPubKey']['addresses'][0];
+					$finder = $output['scriptPubKey']['address'];
 					break;
 				}
 			}

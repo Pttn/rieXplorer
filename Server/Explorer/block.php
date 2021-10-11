@@ -96,7 +96,7 @@ else {
 						}
 						if (isset($inputs['txid'])) {
 							$inputTransaction = $blockchainExplorer->getTransaction($inputs['txid'], true);
-							$transactionContent .= $inputTransaction['vout'][$inputs['vout']]['scriptPubKey']['addresses'][0] ?? 'N/A';
+							$transactionContent .= $inputTransaction['vout'][$inputs['vout']]['scriptPubKey']['address'] ?? 'N/A';
 							$inputValue = $inputTransaction['vout'][$inputs['vout']]['value'];
 							$transactionContent .= '<span style="float:right; padding-left: 16px;">' . sprintf('%.8f', $inputValue) . ' RIC</span><br>';
 						}
@@ -110,7 +110,7 @@ else {
 					$outputValue = $outputs['value'];
 					$outputsValue += $outputValue;
 					if ($i < 10) {
-						$transactionContent .= $outputs['scriptPubKey']['addresses'][0] ?? 'N/A';
+						$transactionContent .= $outputs['scriptPubKey']['address'] ?? 'N/A';
 						$transactionContent .= '<span style="float:right; padding-left: 16px;">' . sprintf('%.8f', $outputValue) . ' RIC</span><br>';
 					}
 					else if ($i == 10)

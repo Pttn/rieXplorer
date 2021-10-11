@@ -69,7 +69,7 @@ else {
 				$inputsContent .= '<td><a href="transaction.php?txid=' . $originalTransactionId . '">' . $originalTransactionId . '</a></td>';
 				$inputsContent .= '<td>' . $inputs['vout'] . '</td>';
 				$originalTransaction = $blockchainExplorer->getTransaction($originalTransactionId, true);
-				$inputsContent .= '<td>' . ($originalTransaction['vout'][$inputs['vout']]['scriptPubKey']['addresses'][0] ?? 'N/A') . '</td>';
+				$inputsContent .= '<td>' . ($originalTransaction['vout'][$inputs['vout']]['scriptPubKey']['address'] ?? 'N/A') . '</td>';
 				$inputValue = $originalTransaction['vout'][$inputs['vout']]['value'];
 				$inputsContent .= '<td>' . sprintf('%.8f', $inputValue) . ' RIC</td>';
 				$inputsValue += $inputValue;
@@ -91,7 +91,7 @@ else {
 		foreach ($transaction['vout'] as &$output) {
 			$outputsContent .= '<tr style="text-align: right;">';
 			$outputsContent .= '<td>' . $output['n'] . '</td>';
-			$outputsContent .= '<td>' . ($output['scriptPubKey']['addresses'][0] ?? 'N/A') . '</td>';
+			$outputsContent .= '<td>' . ($output['scriptPubKey']['address'] ?? 'N/A') . '</td>';
 			$outputValue = $output['value'];
 			$outputsContent .= '<td>' . sprintf('%.8f', $outputValue) . ' RIC</td>';
 			$outputsValue += $outputValue;
